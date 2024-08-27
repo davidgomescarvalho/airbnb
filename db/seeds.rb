@@ -11,6 +11,7 @@ Property.destroy_all
     city:   Faker::Address.city,
     state: Faker::Address.state,
     country: Faker::Address.country,
+    price: Money.from_amount(rand(50..150), 'EUR')
   })
 end
 
