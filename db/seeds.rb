@@ -1,34 +1,17 @@
+puts 'Creating Database....'
 Property.destroy_all
 
-Property.create!({
-  name: "Sample Property",
-  description: "This is a sample property",
-  headline: "Sample Property",
-  address_1: "1234 Sample St",
-  address_2: "Unit 1",
-  city: "Sample City",
-  state: "CA",
-  country: "US",
-})
+20.times do
+  Property.create!({
+    name: Faker::Lorem.unique.sentence(word_count: 3),
+    description: Faker::Lorem.paragraph(sentence_count: 10),
+    headline: Faker::Lorem.sentence(word_count: 6),
+    address_1: Faker::Address.street_address,
+    address_2: Faker::Address.street_name,
+    city:   Faker::Address.city,
+    state: Faker::Address.state,
+    country: Faker::Address.country,
+  })
+end
 
-Property.create!({
-  name: "Sample Property 2",
-  description: "This is a sample property 2",
-  headline: "Sample Property 2",
-  address_1: "50 Sample St",
-  address_2: "Unit 1",
-  city: "Brooklyn",
-  state: "NY",
-  country: "US",
-})
-
-Property.create!({
-  name: "Sample Property 3",
-  description: "This is a sample property 3",
-  headline: "Sample Property 3",
-  address_1: "12 Sample St",
-  address_2: "Unit 1",
-  city: "Boston",
-  state: "MA",
-  country: "US",
-})
+puts 'Database created!'
