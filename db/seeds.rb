@@ -1,7 +1,7 @@
 puts 'Creating Database....'
 Review.destroy_all
 Property.destroy_all
-
+User.destroy_all
 
 user = User.create!({
   email: 'david@gmail.com',
