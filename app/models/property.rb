@@ -9,11 +9,16 @@ class Property < ApplicationRecord
   validates :country, presence: true
 
   monetize :price_cents, allow_nil: true
+
   has_many_attached :images
+
   has_many :reviews, dependent: :destroy
+
   has_many :wishlists, dependent: :destroy
   has_many :wishlisted_users, through: :wishlists, source: :user, dependent: :destroy
 
+  has_many :reservations, dependent: :destroy
+  has_many :reserved_users, through: :reservations, source: :user, dependent: :destroy
 
 
   def update_average_rating
