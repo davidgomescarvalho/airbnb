@@ -19,15 +19,14 @@
             </div>
             <div class="absolute z-10 right-0 top-0 m-4">
               <svg xmlns="http://www.w3.org/2000/svg"
-                fill="rgba(0,0,0,0.5)"
                 viewBox="0 0 24 24"
                 stroke-width="1.5"
                 stroke="white"
-                class="size-6 block"
+                class="size-6 block <%= property.wishlisted_by?(current_user) ? 'fill-primary' : 'fill-none' %>"
                 data-controller="wishlist"
                 data-user-logged-in="<%= user_signed_in? %>"
                 data-action="click->wishlist#updateWishListStatus"
-                data-status="false"
+                data-status="<%= property.wishlisted_by?(current_user) %>"
               >
                   <path stroke-linecap="round"
                   stroke-linejoin="round"
