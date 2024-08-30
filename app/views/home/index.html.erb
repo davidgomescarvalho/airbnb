@@ -25,6 +25,7 @@
                 stroke="white"
                 class="size-6 block"
                 data-controller="wishlist"
+                data-user-logged-in="<%= user_signed_in? %>"
                 data-action="click->wishlist#updateWishListStatus"
                 data-status="false"
               >
