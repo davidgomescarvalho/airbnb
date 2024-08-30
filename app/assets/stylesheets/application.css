@@ -19,42 +19,34 @@
   aspect-ratio: 1/1;
 }
 
-.swiper:hover {
-  .swiper-button-next {
-    display: block !important;
-  }
-  .swiper-button-prev {
-    display: block !important;
-  }
+.swiper:hover .swiper-button-next,
+.swiper:hover .swiper-button-prev {
+  display: block !important;
 }
 
-.swiper-button-next {
+.swiper-button-next,
+.swiper-button-prev {
   display: none !important;
   width: 28px !important;
   height: 28px !important;
   background-color: white;
-  background-image: url('assets/next.svg') !important;
   border-radius: 50%;
   border-width: 4px;
   border-color: white;
   box-sizing: border-box;
 }
 
-.swiper-button-next::after {
-  content: '' !important;
-}
-.swiper-button-prev {
-  display: none !important;
-  width: 28px !important;
-  height: 28px !important;
-  background-color: white;
-  background-image: url('assets/prev.svg') !important;
-  border-radius: 50%;
-  border-width:4px;
-  border-color: white;
-  box-sizing: border-box;
-}
-
+/* Ensure the content is empty, removing default icon */
+.swiper-button-next::after,
 .swiper-button-prev::after {
   content: '' !important;
+}
+
+/* Background image for navigation buttons */
+.swiper-button-next {
+  background-image: url('assets/next.svg') !important;
+}
+
+.swiper-button-prev {
+  background-image: url('assets/prev.svg') !important;
 }
