@@ -20,10 +20,14 @@ module.exports = {
       fontFamily: {
         sans: ["Inter var", ...defaultTheme.fontFamily.sans],
       },
+      gridtemplateRows: {
+        "[auto,auto,1fr]": "auto auto 1fr",
+      },
     },
   },
   plugins: [
     require("@tailwindcss/forms"),
+    require("@tailwindcss/aspect-ratio"),
     require("@tailwindcss/typography"),
     require("@tailwindcss/container-queries"),
   ],
