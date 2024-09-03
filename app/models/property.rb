@@ -39,16 +39,16 @@ class Property < ApplicationRecord
 
     if current_reservation.nil? && next_reservation.nil?
       # 1. If there are no reservations, the property is available
-      Date.tomorrow..Date.tomorrow + 30.days
+      Date.tomorrow.strftime('%e %b')..(Date.tomorrow + 30.days).strftime('%e %b')
     elsif current_reservation.nil?
       # 2. If there are no current reservations, the property is available
-      Date.tomorrow..next_reservation.checkin_date
+      Date.tomorrow.strftime('%e %b')..next_reservation.checkin_date.strftime('%e %b')
     elsif next_reservation.nil?
       # 3. If there are no upcoming reservations, the property is available
-      current_reservation.checkout_date..Date.tomorrow + 30.days
+      current_reservation.checkout_date.strftime('%e %b')..(Date.tomorrow + 30.days).strftime('%e %b')
     else
       # 4. If there are both current and upcoming reservations, the property is available
-      current_reservation.checkout_date..next_reservation.checkin_date
+      current_reservation.checkout_date.strftime('%e %b')..next_reservation.checkin_date.strftime('%e %b')
     end
   end
 
