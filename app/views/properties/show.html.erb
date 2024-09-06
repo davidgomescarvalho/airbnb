@@ -3,9 +3,36 @@
     <!-- Headline + Share + Like -->
     <div class="flex justify-between mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8 py-2">
       <h1 class="inline text-3xl font-medium leading-7 text-gray-900 sm:truncate sm:tracking-tight"><%= @property.headline %></h1>
-      <div>
-        <span>
-          Share
+      <div class="space-x-1">
+        <span class="px-3 py-2 hover:rounded-md hover:bg-gray-100 cursor-pointer">
+          <svg xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+            class="size-4 inline">
+            <path d="M13 4.5a2.5 2.5 0 1 1 .702 1.737L6.97 9.604a2.518 2.518 0 0 1 0 .792l6.733 3.367a2.5 2.5 0 1 1-.671 1.341l-6.733-3.367a2.5 2.5 0 1 1 0-3.475l6.733-3.366A2.52 2.52 0 0 1 13 4.5Z" />
+          </svg>
+          <span class="underline text-sm ms-1">Share</span>
+        </span>
+
+        <%# TODO: make entire span working correctly  %>
+        <span class="px-3 py-2 hover:rounded-md hover:bg-gray-100 cursor-pointer" >
+          <svg xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="gray"
+            class="size-5 inline <%= @property.wishlisted_by?(current_user) ? 'fill-primary' : 'fill-none' %>"
+            data-controller="wishlist"
+            data-user-logged-in="<%= user_signed_in? %>"
+            data-property-id="<%= @property.id %>"
+            data-user-id="<%= current_user&.id %>"
+            data-wishlist-id="<%= @property.wishlists.find_by(user: current_user)&.id %>"
+            data-action="click->wishlist#updateWishlistStatus"
+            data-status="<%= @property.wishlisted_by?(current_user) %>">
+            <path stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
+          </svg>
+          <span class="underline text-sm ms-1"><%= @property.wishlisted_by?(current_user) ? 'Saved' : 'Save' %></span>
         </span>
       </div>
     </div>
