@@ -30,6 +30,7 @@
                 data-user-id="<%= current_user&.id %>"
                 data-wishlist-id="<%= property.wishlists.find_by(user: current_user)&.id %>"
                 data-action="click->wishlist#updateWishlistStatus"
+                data-wishlist-target="icon"
                 data-status="<%= property.wishlisted_by?(current_user) %>"
               >
                   <path stroke-linecap="round"

@@ -1,11 +1,10 @@
 import { Controller } from "@hotwired/stimulus";
 
 export default class extends Controller {
-  updateWishlistStatus() {
-    // Get status if user is logged in or not
-    // If user is not logged in, redirect to login page
-    // else continue with the below code
+  static targets = ["icon", "text"];
 
+  updateWishlistStatus(e) {
+    e.preventDefault();
     const isUserLoggedIn = this.element.dataset.userLoggedIn;
     if (isUserLoggedIn === "false") {
       document.querySelector(".js-login").click();
@@ -14,7 +13,6 @@ export default class extends Controller {
     if (this.element.dataset.status === "false") {
       const propertyId = this.element.dataset.propertyId;
       const userId = this.element.dataset.userId;
-
       this.addPropertyToWishlist(propertyId, userId);
     } else {
       const wishlistId = this.element.dataset.wishlistId;
@@ -47,8 +45,12 @@ export default class extends Controller {
         console.log(data.id);
         this.element.dataset.wishlistId = data.id;
         this.element.dataset.status = "true";
-        this.element.classList.remove("fill-none");
-        this.element.classList.add("fill-primary");
+        this.iconTarget.classList.remove("fill-none");
+        this.iconTarget.classList.add("fill-primary");
+
+        if (this.textTarget) {
+          this.textTarget.innerText = "Saved";
+        }
       })
       .catch((e) => {
         console.error(e);
@@ -62,8 +64,12 @@ export default class extends Controller {
       .then((response) => {
         this.element.dataset.wishlistId = "";
         this.element.dataset.status = "false";
-        this.element.classList.remove("fill-primary");
-        this.element.classList.add("fill-none");
+        this.iconTarget.classList.remove("fill-primary");
+        this.iconTarget.classList.add("fill-none");
+
+        if (this.textTarget) {
+          this.textTarget.innerText = "Save";
+        }
       })
       .catch((e) => {
         console.log(e);
