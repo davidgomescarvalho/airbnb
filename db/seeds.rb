@@ -23,7 +23,12 @@ user = User.create!({
   })
 
   property.images.attach(io: File.open("db/images/house-#{i + 1}.png"), filename: property.name)
-  property.images.attach(io: File.open("db/images/house-#{i + 7}.png"), filename: property.name)
+  property.images.attach(io: File.open("db/images/house-7.png"), filename: property.name)
+  property.images.attach(io: File.open("db/images/house-8.png"), filename: property.name)
+  property.images.attach(io: File.open("db/images/house-9.png"), filename: property.name)
+  property.images.attach(io: File.open("db/images/house-10.png"), filename: property.name)
+  property.images.attach(io: File.open("db/images/house-11.png"), filename: property.name)
+  property.images.attach(io: File.open("db/images/house-12.png"), filename: property.name)
 
   ((5..10).to_a.sample).times do
     Review.create!({
