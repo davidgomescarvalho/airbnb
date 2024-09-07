@@ -3,6 +3,10 @@ Review.destroy_all
 Property.destroy_all
 User.destroy_all
 
+
+description = <<-DESCRIPTION
+
+DESCRIPTION
 user = User.create!({
   email: 'david@gmail.com',
   password: '123456'
