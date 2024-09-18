@@ -267,8 +267,8 @@
           <h3 class="sr-only">Description</h3>
 
           <div class="space-y-6">
-            <p class="text-base text-gray-900"><%= @property.description.truncate(500) %></p>
-            <% if @property.description.length > 500 %>
+            <p class="text-base text-gray-900"><%= @property.description.to_plain_text.truncate(400) %></p>
+            <% if @property.description.to_plain_text.length > 400 %>
               <div class="flex items-center gap-1">
                 <span class="font-medium underline">Show more</span>
                 <svg xmlns="http://www.w3.org/2000/svg"
