@@ -2,7 +2,7 @@
   <h2 id="reviews-heading" class="sr-only">Reviews</h2>
 
   <!-- Reviews Stats-->
-    <section aria-labelledby="reviews-stats" class="border-t border-gray-200 pt-10 pb-10">
+    <section aria-labelledby="reviews-stats" class="border-t border-gray-200 pt-10">
       <% if property.reviews_count == 0  %>
       <span class="text-2xl font-medium leading-6 text-gray-900 flex items-center">
         <svg
@@ -29,6 +29,43 @@
           </svg>
           <span> <%= (@property.average_final_rating).round(2) %> · <%= @property.reviews_count %> reviews</span>
           </span>
+        </div>
+
+        <!-- Review category stats -->
+        <div class=" grid grid-cols-7 pag-4 mt-8 divide-x">
+          <div>
+            Overal rating
+          </div>
+          <div class="ps-4">
+            <h4 class="text-sm font-medium">Cleanliness</h4>
+            <p class="text-lg font-medium">4.8</p>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 32 32"
+              aria-hidden="true"
+              role="presentation"
+              focusable="false"
+              class="block h-8 w-8 fill_current mt-6"
+              style="display: block; height: 32px; width: 32px; fill: currentcolor;"
+            >
+              <path d="M24 0v6h-4.3c.13 1.4.67 2.72 1.52 3.78l.2.22-1.5 1.33a9.05 9.05 0 0 1-2.2-5.08c-.83.38-1.32 1.14-1.38 2.2v4.46l4.14 4.02a5 5 0 0 1 1.5 3.09l.01.25.01.25v8.63a3 3 0 0 1-2.64 2.98l-.18.01-.21.01-12-.13A3 3 0 0 1 4 29.2L4 29.02v-8.3a5 5 0 0 1 1.38-3.45l.19-.18L10 12.9V8.85l-4.01-3.4.02-.7A5 5 0 0 1 10.78 0H11zm-5.03 25.69a8.98 8.98 0 0 1-6.13-2.41l-.23-.23A6.97 6.97 0 0 0 6 21.2v7.82c0 .51.38.93.87 1H7l11.96.13h.13a1 1 0 0 0 .91-.88l.01-.12v-3.52c-.34.04-.69.06-1.03.06zM17.67 2H11a3 3 0 0 0-2.92 2.3l-.04.18-.01.08 3.67 3.1h2.72l.02-.1a4.29 4.29 0 0 1 3.23-3.4zM30 4a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm-3-2a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm-5 0h-2.33v2H22zm8-2a1 1 0 1 1 0 2 1 1 0 0 1 0-2zM20 20.52a3 3 0 0 0-.77-2l-.14-.15-4.76-4.61v-4.1H12v4.1l-5.06 4.78a3 3 0 0 0-.45.53 9.03 9.03 0 0 1 7.3 2.34l.23.23A6.98 6.98 0 0 0 20 23.6z"></path>
+            </svg>
+          </div>
+          <div>
+
+          </div>
+          <div>
+            3
+          </div>
+          <div>
+            4
+          </div>
+          <div>
+            5
+          </div>
+          <div>
+            6
+          </div>
         </div>
       <% end %>
     </div>
