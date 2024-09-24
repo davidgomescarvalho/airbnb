@@ -28,6 +28,10 @@ class Property < ApplicationRecord
     update_column(:average_final_rating, average_rating)
   end
 
+  def average_cleanliness_rating
+    reviews.average(:cleanliness_rating)
+  end
+
   def wishlisted_by?(user = nil)
     return if user.nil?
 
