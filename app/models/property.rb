@@ -32,6 +32,26 @@ class Property < ApplicationRecord
     reviews.average(:cleanliness_rating)
   end
 
+  def average_accuracy_rating
+    reviews.average(:accuracy_rating)
+  end
+
+  def average_checkin_rating
+    reviews.average(:checkin_rating)
+  end
+
+  def average_communication_rating
+    reviews.average(:communication_rating)
+  end
+
+  def average_location_rating
+    reviews.average(:location_rating)
+  end
+
+  def value_rating
+    reviews.average(:value_rating)
+  end
+
   def wishlisted_by?(user = nil)
     return if user.nil?
 

@@ -100,7 +100,7 @@
 
           <div class="ps-2 sm:ps-4 lg:ps-6">
             <h4 class="text-sm font-medium">Cleanliness</h4>
-            <p class="text-lg font-medium"><%= property.average_cleanliness_rating() %></p>
+            <p class="text-lg font-medium"><%= property.average_cleanliness_rating().round(1) %></p>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 32 32"
