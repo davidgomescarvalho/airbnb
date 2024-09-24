@@ -48,7 +48,7 @@ class Property < ApplicationRecord
     reviews.average(:location_rating)
   end
 
-  def value_rating
+  def average_value_rating
     reviews.average(:value_rating)
   end
 
