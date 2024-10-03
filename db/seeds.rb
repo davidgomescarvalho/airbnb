@@ -12,11 +12,39 @@ description = <<-DESCRIPTION
 <h4 class="font-medium" tabindex="-1">Guest Policy</h4>
 <p>Entire Property is yours!! Wish you fun and happy stay!!</p>
 DESCRIPTION
+
+pictures = []
+20.times do
+  pictures << URI.parse(Faker::LoremFlickr.image).open
+end
+
 user = User.create!({
   email: 'david@gmail.com',
-  password: '123456'
+  password: '123456',
+  name: Faker::Lorem.unique.sentence(word_count: 3),
+  address_1: Faker::Address.street_address,
+  address_2: Faker::Address.street_name,
+  city:   Faker::Address.city,
+  state: Faker::Address.state,
+  country: Faker::Address.country,
 })
 
+user.picture.attach(io: pictures[0], filename: user.name )
+
+19.times do |i|
+  random_user = User.create!({
+    email: "test#{i + 2}@gmail.com",
+    password: '123456',
+    name: Faker::Lorem.unique.sentence(word_count: 3),
+    address_1: Faker::Address.street_address,
+    address_2: Faker::Address.street_name,
+    city:   Faker::Address.city,
+    state: Faker::Address.state,
+    country: Faker::Address.country,
+})
+  random_user.picture.attach(io: pictures[i + 1], filename: user.name )
+
+end
 
 6.times do |i|
   property = Property.create!({
@@ -53,7 +81,7 @@ user = User.create!({
       location_rating: rand(1..5),
       value_rating: rand(1..5),
       property: property,
-      user: user
+      user: User.all.sample
     })
   end
 end
