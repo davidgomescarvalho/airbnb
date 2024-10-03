@@ -163,7 +163,7 @@
           <% property.reviews.limit(6).each do |review| %>
             <div class="flex flex-col">
               <div class="flex items-center">
-                <img src="https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixqx=oilqXxSqey&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="Mark Edwards." class="h-12 w-12 rounded-full">
+                <%= image_tag review.user.picture, alt: review.user.name, class: "h-12 w-12 rounded-full" %>
                 <div>
                   <p class="text-base text-gray-900 ms-4"><%= review.user.name %></p>
                   <p class="text-xs text-gray-900 ms-4"><%= review.user.city %>, <%= review.user.country %></p>
