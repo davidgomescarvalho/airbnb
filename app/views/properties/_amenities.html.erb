@@ -12,9 +12,11 @@
       <% end %>
     </div>
 
-    <% if (amenities.count > 8) %>
+    <% if (amenities.count > 6) %>
       <button
+        data-controller="modal"
         type="button"
+        data-action="click->modal#show"
         class="mt-8 rounded-md bg-white px-3.5 py-2.5 text-sm font-medium text-gray-900 ring-1 ring-inset ring-black hover:bg-gray-50"
       >
         Show all <%= amenities.count %> amenities
@@ -23,3 +25,6 @@
 
   </div>
 </div>
+
+
+<%= render 'shared/modal'%>
