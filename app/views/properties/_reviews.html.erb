@@ -187,6 +187,8 @@
           <% if (property.reviews_count > 6) %>
             <button
               type="button"
+              data-controller="modal"
+              data-action="click->modal#show"
               class="rounded-md bg-white px-3.5 py-2.5 text-sm font-medium text-gray-900 ring-1 ring-inset ring-black hover:bg-gray-50"
             >
               Show all <%= property.reviews_count %> reviews
@@ -196,3 +198,5 @@
       </div>
     </section>
 </div>
+
+<%= render 'shared/modal', content: 'properties/reviews_modal' %>
