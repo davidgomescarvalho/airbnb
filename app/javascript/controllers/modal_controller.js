@@ -5,6 +5,7 @@ export default class extends Controller {
   connect() {}
 
   toggleModal() {
-    toggle(document.getElementById("modal-wrapper"));
+    const modalTriggerId = this.element.dataset.modalTriggerId;
+    toggle(document.getElementById(`modal-${modalTriggerId}-wrapper`));
   }
 }
