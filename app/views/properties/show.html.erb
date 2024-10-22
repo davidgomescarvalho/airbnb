@@ -102,7 +102,7 @@
         data-per-night-price="<%= humanized_money(@property.price) %>"
       >
         <h2 class="sr-only">Bookig information</h2>
-        <p class="text-lg font-light tracking-tight text-gray-900"><span class="text-2xl font-medium mr-1"><%= humanized_money_with_symbol(@property.price) %></span>night</p>
+        <p class="text-lg font-light tracking-tight text-gray-900"><span class="text-2xl font-medium mr-1"><%= humanized_money(@property.price) %> <%= currency_symbol %></span>night</p>
 
         <div class="flex mt-6">
           <div class="rounded-l-lg px-3 pb-1.5 pt-2.5 shadow-sm ring-1 ring-inset ring-gray-400 focus-within:ring-2 focus-within:ring-indigo-600">
@@ -136,8 +136,8 @@
           <p class="font-light text-center text-sm py-4">You won't be charged yet</p>
           <div class="mt-4">
             <div class="flex justify-between font-light">
-              <p><%= humanized_money_with_symbol(@property.price) %> x <span data-booking-target ="numberOfNights">1</span> night </p>
-              <p>149 €</p>
+              <p><%= humanized_money(@property.price) %> <%= currency_symbol %> x <span data-booking-target ="numberOfNights">1</span> night </p>
+              <p><span data-booking-target="baseFare">0</span> <%= currency_symbol %></p>
             </div>
             <div class="flex justify-between font-light mt-4">
               <p>Airbnb service fee</p>
