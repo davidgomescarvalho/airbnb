@@ -1,11 +1,12 @@
 import { Controller } from "@hotwired/stimulus";
+import { flatpickr } from "flatpickr";
 
 export default class extends Controller {
   static targets = ["baseFare", "numberOfNights", "serviceFee", "totalAmount"];
   SERVICE_FEE = 0.18;
 
   connect() {
-    const perNightPrice = this.element.dataset.perNightPrice;
+    console.log("datepicker connected", flatpickr);
     this.updateDetails();
   }
 
