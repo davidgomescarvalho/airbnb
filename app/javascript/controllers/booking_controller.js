@@ -12,8 +12,16 @@ export default class extends Controller {
   SERVICE_FEE_PERCENTAGE = 0.1;
 
   connect() {
+    console.log(this.element.dataset.blockedDates);
+
     flatpickr(this.checkinTarget, {
       minDate: new Date().fp_incr(1),
+      disable: [
+        {
+          from: "2024-12-01",
+          to: "2024-12-10",
+        },
+      ],
       onChange: (selectedDates, dateStr, instance) => {
         this.triggerCheckoutDatePicker(selectedDates);
       },
