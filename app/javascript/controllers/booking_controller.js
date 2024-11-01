@@ -12,8 +12,20 @@ export default class extends Controller {
   SERVICE_FEE_PERCENTAGE = 0.1;
 
   connect() {
+    const blockedDates = JSON.parse(this.element.dataset.blockedDates);
+    const formattedBlockedDates = [];
+
+    for (let i = 0; i < blockedDates.length; i++) {
+      const dates = blockedDates[i];
+      formattedBlockedDates.push({
+        from: dates[0], // checkin date
+        to: dates[1], // checkout date
+      });
+    }
+
     flatpickr(this.checkinTarget, {
       minDate: new Date().fp_incr(1),
+      disable: formattedBlockedDates,
       onChange: (selectedDates, dateStr, instance) => {
         this.triggerCheckoutDatePicker(selectedDates);
       },
