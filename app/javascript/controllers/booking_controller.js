@@ -18,6 +18,8 @@ export default class extends Controller {
         this.triggerCheckoutDatePicker(selectedDates);
       },
     });
+
+    this.updateDetails();
   }
 
   triggerCheckoutDatePicker(selectedDates) {
