@@ -1,12 +1,34 @@
 import { Controller } from "@hotwired/stimulus";
 import flatpickr from "flatpickr";
 export default class extends Controller {
-  static targets = ["baseFare", "numberOfNights", "serviceFee", "totalAmount"];
+  static targets = [
+    "baseFare",
+    "checkin",
+    "checkout",
+    "numberOfNights",
+    "serviceFee",
+    "totalAmount",
+  ];
   SERVICE_FEE = 0.18;
 
   connect() {
-    console.log("datepicker connected", flatpickr);
+    flatpickr(this.checkinTarget, {
+      minDate: new Date().fp_incr(1),
+      onChange: (selectedDates, dateStr, instance) => {
+        this.triggerCheckoutDatePicker();
+      },
+    });
+
     this.updateDetails();
+  }
+
+  triggerCheckoutDatePicker() {
+    flatpickr(this.checkoutTarget, {
+      minDate: new Date().fp_incr(1),
+      onChange: (selectedDates, dateStr, instance) => {},
+    });
+
+    this.checkoutTarget.click();
   }
 
   updateDetails() {
