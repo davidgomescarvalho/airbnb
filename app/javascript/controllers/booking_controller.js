@@ -81,4 +81,10 @@ export default class extends Controller {
   calculateTotalAmount(baseFare, serviceFee) {
     return parseFloat((baseFare + serviceFee).toFixed(2));
   }
+
+  reserveProperty(e) {
+    e.preventDefault();
+
+    Turbo.visit("/example");
+  }
 }
