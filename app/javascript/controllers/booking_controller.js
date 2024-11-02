@@ -84,8 +84,15 @@ export default class extends Controller {
 
   reserveProperty(e) {
     e.preventDefault();
-    const baseURL = e.target.dataset.reservePropertyUrl;
 
-    Turbo.visit(baseURL);
+    const paramsData = {
+      checkin_date: "20-02-2024",
+      checkout_date: "22-02-2024",
+    };
+
+    const paramsURL = new URLSearchParams(paramsData).toString();
+
+    const baseURL = e.target.dataset.reservePropertyUrl;
+    Turbo.visit(`${baseURL}?${paramsURL}`);
   }
 }
