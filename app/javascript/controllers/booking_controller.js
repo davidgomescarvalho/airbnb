@@ -84,7 +84,8 @@ export default class extends Controller {
 
   reserveProperty(e) {
     e.preventDefault();
+    const baseURL = e.target.dataset.reservePropertyUrl;
 
-    Turbo.visit("/example");
+    Turbo.visit(baseURL);
   }
 }
