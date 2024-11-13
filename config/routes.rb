@@ -15,4 +15,5 @@ Rails.application.routes.draw do
     resources :bookings, only: [:new]
   end
 
+  resources :booking_payments, only: [:create]
 end
