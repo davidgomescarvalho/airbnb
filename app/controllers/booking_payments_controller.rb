@@ -22,8 +22,6 @@ class BookingPaymentsController < ApplicationController
       mode: 'payment',
     })
 
-    raise
-
     redirect_to stripe_session.url, allow_other_host: true, status: 303
   end
 
