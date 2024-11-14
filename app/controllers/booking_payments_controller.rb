@@ -15,7 +15,7 @@ class BookingPaymentsController < ApplicationController
       controller: 'booking_payments',
       action: 'success',
       only_path: false,
-      booking_params: booking_payments_params.exept(:stripeToken)
+      booking_params: booking_payments_params.except(:stripeToken)
     )
 
     stripe_session = Stripe::Checkout::Session.create({
@@ -34,7 +34,15 @@ class BookingPaymentsController < ApplicationController
 
   def success
     # Add reservation
+    booking_params = params[:booking_params]
+    reservation = Reservation.create!(
+      user_id: current_user.id,
+      property_id: booking_params[:property_id],
+      checkin_date: booking_params[:checkin_date],
+      checkout_date: booking_params[:checkout_date]
+    )
     # Add payment details offline
+    raise
 
   end
 
