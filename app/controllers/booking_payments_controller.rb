@@ -11,7 +11,13 @@ class BookingPaymentsController < ApplicationController
       }
     })
 
-    success_url = url_for(controller: 'booking_payments', action: 'success', only_path: false)
+    success_url = url_for(
+      controller: 'booking_payments',
+      action: 'success',
+      only_path: false,
+      booking_params: booking_payments_params.exept(:stripeToken)
+    )
+
     stripe_session = Stripe::Checkout::Session.create({
       success_url: success_url,
       line_items: [
