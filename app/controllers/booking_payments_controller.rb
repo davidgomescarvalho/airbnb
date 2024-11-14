@@ -2,7 +2,7 @@ class BookingPaymentsController < ApplicationController
   def create
 
     @property = Property.find(booking_payments_params[:property_id])
-    raise
+
     stripe_price = Stripe::Price.create({
       currency: 'usd',
       unit_amount: Money.from_amount(BigDecimal(booking_payments_params[:total_amount])).cents,
@@ -22,6 +22,8 @@ class BookingPaymentsController < ApplicationController
       mode: 'payment',
     })
 
+    raise
+
     redirect_to stripe_session.url, allow_other_host: true, status: 303
   end
 
@@ -36,7 +38,7 @@ class BookingPaymentsController < ApplicationController
       :checkout_date,
       :base_fare,
       :service_fee,
-      :total_fare
+      :total_amount
      )
   end
 
