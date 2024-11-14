@@ -2,7 +2,7 @@ class BookingPaymentsController < ApplicationController
   def create
 
     @property = Property.find(booking_payments_params[:property_id])
-    raise
+
     stripe_price = Stripe::Price.create({
       currency: 'usd',
       unit_amount: Money.from_amount(BigDecimal(booking_payments_params[:total_amount])).cents,
@@ -11,8 +11,15 @@ class BookingPaymentsController < ApplicationController
       }
     })
 
+    success_url = url_for(
+      controller: 'booking_payments',
+      action: 'success',
+      only_path: false,
+      booking_params: booking_payments_params.except(:stripeToken)
+    )
+
     stripe_session = Stripe::Checkout::Session.create({
-      success_url: 'https://example.com/success',
+      success_url: success_url,
       line_items: [
         {
           price: stripe_price.id,
@@ -23,6 +30,20 @@ class BookingPaymentsController < ApplicationController
     })
 
     redirect_to stripe_session.url, allow_other_host: true, status: 303
+  end
+
+  def success
+    # Add reservation
+    booking_params = params[:booking_params]
+    reservation = Reservation.create!(
+      user_id: current_user.id,
+      property_id: booking_params[:property_id],
+      checkin_date: booking_params[:checkin_date],
+      checkout_date: booking_params[:checkout_date]
+    )
+    # Add payment details offline
+    raise
+
   end
 
   private
@@ -36,7 +57,7 @@ class BookingPaymentsController < ApplicationController
       :checkout_date,
       :base_fare,
       :service_fee,
-      :total_fare
+      :total_amount
      )
   end
 
