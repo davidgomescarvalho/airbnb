@@ -11,8 +11,9 @@ class BookingPaymentsController < ApplicationController
       }
     })
 
+    success_url = url_for(controller: 'booking_payments', action: 'success', only_path: false)
     stripe_session = Stripe::Checkout::Session.create({
-      success_url: 'https://example.com/success',
+      success_url: success_url,
       line_items: [
         {
           price: stripe_price.id,
@@ -23,6 +24,12 @@ class BookingPaymentsController < ApplicationController
     })
 
     redirect_to stripe_session.url, allow_other_host: true, status: 303
+  end
+
+  def success
+    # Add reservation
+    # Add payment details offline
+
   end
 
   private
