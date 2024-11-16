@@ -23,6 +23,8 @@ class Property < ApplicationRecord
   has_many :reservations, dependent: :destroy
   has_many :reserved_users, through: :reservations, source: :user, dependent: :destroy
 
+  has_many :payments, through: :reservations, dependent: :destroy
+
   has_rich_text :description
 
 
