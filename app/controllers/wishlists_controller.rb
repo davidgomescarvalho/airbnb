@@ -1,6 +1,6 @@
 class WishlistsController < ApplicationController
 
   def index
-    @wishlists = Wishlist.all
+   @properties = current_user.wishlisted_properties
   end
 end

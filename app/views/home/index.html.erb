@@ -2,66 +2,7 @@
   <div class="mx-auto max-w-2xl px-4 py-16 sm:px-6 lg:max-w-7xl lg:px-8">
     <div class="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
       <% @properties.each do |property| %>
-      <%= link_to property_path(property) do  %>
-        <div class="group relative cursor-pointer">
-          <div class="relative overflow-hidden rounded-md bg-gray-200">
-            <!-- Slider main container -->
-            <div class="swiper">
-              <!-- Additional required wrapper -->
-              <div class="swiper-wrapper">
-                <!-- Slides -->
-                <% property.images.each do |image| %>
-                  <%= image_tag image, class: "swiper-slide h-full w-full object-cover object-center lg:h-full lg:w-full" %>
-                <% end %>
-              </div>
-              <!-- If we need navigation buttons -->
-              <div class="swiper-button-prev"></div>
-              <div class="swiper-button-next"></div>
-            </div>
-            <div class="absolute z-10 right-0 top-0 m-4">
-              <svg xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="white"
-                class="size-6 block <%= property.wishlisted_by?(current_user) ? 'fill-primary' : 'fill-none' %>"
-                data-controller="wishlist"
-                data-user-logged-in="<%= user_signed_in? %>"
-                data-property-id="<%= property.id %>"
-                data-user-id="<%= current_user&.id %>"
-                data-wishlist-id="<%= property.wishlists.find_by(user: current_user)&.id %>"
-                data-action="click->wishlist#updateWishlistStatus"
-                data-wishlist-target="icon"
-                data-status="<%= property.wishlisted_by?(current_user) %>"
-              >
-                  <path stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
-              </svg>
-
-            </div>
-          </div>
-          <div class="mt-2">
-            <div class="flex justify-between">
-              <h3 class="text-base font-medium text-gray-700">
-               <%= property.city %>, <%= property.country %>
-              </h3>
-              <span class="flex items-baseline font-light text-sm">
-                <svg xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                class="size-3 mr-1">
-                <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" />
-                </svg>
-                <%= (property.average_final_rating).round(2) %>
-              </span>
-            </div>
-            <%# TODO: add distance from property based on location%>
-              <p class="mt-0.5 text-sm text-gray-500"><%= property.available_dates.first %> - <%= property.available_dates.last %></p>
-              <p class="mt-1 text-sm font-light text-black">
-                <span class="font-medium mr-1"><%= humanized_money_with_symbol(property.price) %></span>night</p>
-          </div>
-        </div>
-        <% end %>
+      <%= render 'properties/property_item', property: property  %>
       <% end %>
     </div>
   </div>
