@@ -42,8 +42,14 @@ class BookingPaymentsController < ApplicationController
       checkout_date: booking_params[:checkout_date]
     )
     # Add payment details offline
-    raise
-
+    payment = Payment.create!(
+      reservation_id: reservation.id,
+      base_fare: Money.from_amount(BigDecimal(booking_params[:base_fare])),
+      service_fee: Money.from_amount(BigDecimal(booking_params[:service_fee])),
+      total_amount: Money.from_amount(BigDecimal(booking_params[:total_amount])),
+    )
+    # Redirect to all bookings page
+    redirect_to root_path
   end
 
   private
