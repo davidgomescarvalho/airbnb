@@ -4,7 +4,7 @@
 
   <main class="my-8 lg:flex-auto">
     <div>
-      <h2 class="text-2xl font-semibold leading-7 text-gray-900">Reservations & Payments</h2>
+      <h2 class="text-lg font-semibold leading-7 text-gray-900">Reservations & Payments</h2>
     </div>
 
     <div class="flex flex-col">
@@ -30,17 +30,32 @@
             </div>
           </div>
 
+          <div>
+            <h3 class="text-xl font-medium leading-6 text-gray-900">Trip details</h3>
+             <div class="flex justify-between font-light mt-6">
+                <p>Dates</p>
+                <p><%= reservation.checkin_date %> - <%= reservation.checkout_date %> </p>
+              </div>
+          </div>
+
+          <div class="relative py-6">
+            <div class="absolute inset-0 flex items-center" aria-hidden="true">
+              <div class="w-full border-t border-gray-300"></div>
+            </div>
+          </div>
+
             <div>
               <h3 class="text-xl font-medium leading-6 text-gray-900">Price details</h3>
               <div class="flex justify-between font-light mt-6">
-                <p><%= humanized_money(reservation.property.price) %> <%= currency_symbol %> x <%= 1 %> night </p>
+                <p><%= humanized_money(reservation.property.price) %> <%= currency_symbol %> x <%= (reservation.checkout_date - reservation.checkin_date).to_i %> night </p>
                 <p><%= humanized_money(reservation.payment.base_fare) %> <%= currency_symbol %></p>
               </div>
-              <div class="flex justify-between font-light mt-4">
-                <p>Airbnb service fee</p>
-                <p><%= humanized_money(reservation.payment.service_fee) %> <%= currency_symbol %></p>
-              </div>
+               <div class="flex justify-between font-light mt-4">
+              <p>Airbnb service fee</p>
+              <p><%= humanized_money(reservation.payment.service_fee) %> <%= currency_symbol %></p>
             </div>
+            </div>
+
             <div class="relative py-6">
               <div class="absolute inset-0 flex items-center" aria-hidden="true">
                 <div class="w-full border-t border-gray-300"></div>
