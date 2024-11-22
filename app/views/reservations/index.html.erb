@@ -1,7 +1,5 @@
 <div class="mx-auto max-w-7xl lg:flex lg:gap-x-16 lg:px-8">
-
   <%= render 'shared/profile_sidebar' %>
-
   <main class="my-8 lg:flex-auto">
     <div>
       <h2 class="text-lg font-semibold leading-7 text-gray-900">Reservations & Payments</h2>
@@ -9,8 +7,9 @@
 
     <div class="flex flex-col mt-4">
       <% @reservations.each do |reservation| %>
-        <div class="mt-4 border border-gray-300 rounded-xl p-6 h-min">
+      <div class="mt-4 border border-gray-300 rounded-xl p-6 h-min">
 
+        <div class="flex justify-between">
           <div class="flex items-center">
             <%= image_tag reservation.property.images[0], class:"w-24 h-24 object-cover rounded-md"%>
             <div class="ml-3 text-black font-medium">
@@ -23,6 +22,9 @@
                 </span>
             </div>
           </div>
+
+          <%= link_to 'Add review', new_reservation_review_path(reservation), class: "flex h-10 items-center justify-center rounded-md border border-transparent bg-primary px-8 py-1 text-base font-medium text-white hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"  %>
+        </div>
 
           <div class="relative py-6">
             <div class="absolute inset-0 flex items-center" aria-hidden="true">
@@ -65,7 +67,7 @@
               <p>Total</p>
               <p><%= humanized_money(reservation.payment.total_amount) %> <%= currency_symbol %></p>
             </div>
-        </div>
+      </div>
       <% end %>
     </div>
 
