@@ -1,6 +1,6 @@
 class ReservationsController < ApplicationController
 
-  def show
+  def index
     @reservations = current_user.reservations
   end
 end
