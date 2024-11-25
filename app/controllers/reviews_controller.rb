@@ -5,16 +5,20 @@ class ReviewsController < ApplicationController
   end
 
   def create
-
+    @review = Review.new(review_params)
+    if @review.save
+      redirect_to root_path, notice: "Review created successfully"
+    else
+      redirect_back fallback_location: root_path, alert: "Review could not be created"
+    end
   end
 
   private
 
-  def reviews_params
+  def review_params
     params.permit(
       :user_id,
       :property_id,
-      :reservation_id,
       :content,
       :cleanliness_rating,
       :accuracy_rating,
