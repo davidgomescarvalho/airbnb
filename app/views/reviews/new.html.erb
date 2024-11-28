@@ -30,7 +30,11 @@
         <%= form_with url: reservation_reviews_path() do |f| %>
           <%= f.hidden_field :user_id, value: current_user.id %>
           <%= f.hidden_field :property_id, value: @reservation.property_id %>
-          <%= f.hidden_field :content, value: "David Review" %>
+
+          <div class="flex flex-col py-4">
+            <%= f.label :content %>
+            <%= f.text_area :content %>
+          </div>
 
           <%= f.hidden_field :cleanliness_rating, value: 4 %>
           <%= f.hidden_field :accuracy_rating, value: 5 %>
