@@ -1,6 +1,6 @@
 
-<div class="flex flex-col py-4">
-  <%= f.label category_rating %>
+<div class="flex justify-between py-4">
+  <%= f.label category_rating, class: "text-sm font-medium leading-6 text-gray-900" %>
   <div class="flex">
     <%= f.hidden_field category_rating, data: {"rating-target": category_rating} %>
     <% 5.times do |i| %>
