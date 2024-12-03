@@ -9,6 +9,9 @@ export default class extends Controller {
       `input[data-rating-target="${ratingCategory}_rating"]`
     );
 
+    const stars = rootElement.querySelectorAll(`[data-rating-target="star"]`);
+    console.log("stars", stars);
+
     if (ratingInput) {
       ratingInput.value = rating;
     }
