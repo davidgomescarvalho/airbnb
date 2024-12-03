@@ -12,6 +12,16 @@ export default class extends Controller {
     const stars = rootElement.querySelectorAll(`[data-rating-target="star"]`);
     console.log("stars", stars);
 
+    stars.forEach((star) => {
+      if (star.dataset.rating <= rating) {
+        star.classList.remove("fill-gray-300");
+        star.classList.add("fill-amber-300");
+      } else {
+        star.classList.remove("fill-amber-300");
+        star.classList.add("fill-gray-300");
+      }
+    });
+
     if (ratingInput) {
       ratingInput.value = rating;
     }
