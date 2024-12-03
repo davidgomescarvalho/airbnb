@@ -1,16 +1,15 @@
 
 <div class="flex flex-col py-4">
-  <%= f.label :cleaniness_rating %>
-
+  <%= f.label category_rating %>
   <div class="flex">
-    <%= f.hidden_field :cleanliness_rating, data: {"rating-target": "cleanliness_rating"} %>
+    <%= f.hidden_field category_rating, data: {"rating-target": category_rating} %>
     <% 5.times do |i| %>
       <svg class="fill-gray-300 h-6 w-6 flex-shrink-0"
         viewBox="0 0 20 20"
         fill="currentColor"
         aria-hidden="true"
         data-action="click->rating#setRating"
-        data-category="cleanliness_rating"
+        data-category="<%= category_rating %>"
         data-rating-target="star"
         data-rating="<%= i + 1 %>"
       >

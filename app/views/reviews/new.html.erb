@@ -57,6 +57,9 @@
                 <% end %>
               </div>
             </div>
+
+            <%= render :partial => 'reviews/rating_item', :locals => {:f => f, category_rating: "cleanliness_rating"}  %>
+
           </div>
 
           <%= f.hidden_field :accuracy_rating, value: 5 %>
