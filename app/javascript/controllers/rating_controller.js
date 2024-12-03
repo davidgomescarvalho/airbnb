@@ -6,12 +6,10 @@ export default class extends Controller {
     const ratingCategory = e.currentTarget.dataset.category;
     const rootElement = e.currentTarget.parentNode;
     const ratingInput = rootElement.querySelector(
-      `input[data-rating-target="${ratingCategory}_rating"]`
+      `input[data-rating-target="${ratingCategory}"]`
     );
 
     const stars = rootElement.querySelectorAll(`[data-rating-target="star"]`);
-    console.log("stars", stars);
-
     stars.forEach((star) => {
       if (star.dataset.rating <= rating) {
         star.classList.remove("fill-gray-300");
