@@ -149,19 +149,19 @@ end
     end
   end
 
-  ((5..10).to_a.sample).times do
-    Review.create!({
-      content: Faker::Lorem.paragraph(sentence_count: 10),
-      cleanliness_rating: rand(1..5),
-      accuracy_rating: rand(1..5),
-      checkin_rating: rand(1..5),
-      communication_rating: rand(1..5),
-      location_rating: rand(1..5),
-      value_rating: rand(1..5),
-      property: property,
-      user: User.all.sample
-    })
-  end
+  # ((5..10).to_a.sample).times do
+  #   Review.create!({
+  #     content: Faker::Lorem.paragraph(sentence_count: 10),
+  #     cleanliness_rating: rand(1..5),
+  #     accuracy_rating: rand(1..5),
+  #     checkin_rating: rand(1..5),
+  #     communication_rating: rand(1..5),
+  #     location_rating: rand(1..5),
+  #     value_rating: rand(1..5),
+  #     property: property,
+  #     user: User.all.sample
+  #   })
+  # end
 end
 
 puts 'Database created!'
