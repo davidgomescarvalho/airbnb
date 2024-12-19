@@ -18,7 +18,6 @@ class ReviewsController < ApplicationController
 
   def review_params
     params.permit(
-      :user_id,
       :content,
       :cleanliness_rating,
       :accuracy_rating,
