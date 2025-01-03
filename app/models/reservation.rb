@@ -3,6 +3,8 @@ class Reservation < ApplicationRecord
   belongs_to :property
 
   has_one :payment
+  has_one :review
+
 
   validates :checkin_date, presence: true
   validates :checkout_date, presence: true
