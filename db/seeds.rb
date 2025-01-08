@@ -75,7 +75,15 @@ end
 
 pictures = []
 20.times do
-  pictures << URI.parse(Faker::LoremFlickr.image).open
+  #pictures << URI.parse(Faker::LoremFlickr.image).open
+  begin
+    url = Faker::LoremFlickr.image
+    picture = URI.parse(url).open
+    pictures << picture
+  rescue OpenURI::HTTPError => e
+    puts "Failed to fetch image from #{url}: #{e.message}"
+    pictures << nil # Placeholder for failed images
+  end
 end
 
 user = User.create!({
@@ -92,7 +100,7 @@ user.profile.update!({
   country: Faker::Address.country
 })
 
-profile.picture.attach(io: pictures[0], filename: user.profile.name )
+user.profile.picture.attach(io: pictures[0], filename: user.profile.name )
 
 19.times do |i|
   random_user = User.create!({
