@@ -5,6 +5,7 @@ ruby "3.1.2"
 gem "rails", "~> 7.1.3", ">= 7.1.3.4"
 
 gem "bootsnap", require: false
+gem 'country_select', '~> 8.0'
 gem "importmap-rails"
 gem "jbuilder"
 gem "pg", "~> 1.1"
