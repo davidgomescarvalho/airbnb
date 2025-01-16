@@ -74,7 +74,7 @@ end
 
 
 pictures = []
-20.times do
+10.times do
   #pictures << URI.parse(Faker::LoremFlickr.image).open
   begin
     url = Faker::LoremFlickr.image
@@ -97,12 +97,12 @@ user.profile.update!({
   address_2: Faker::Address.street_name,
   city: Faker::Address.city,
   state: Faker::Address.state,
-  country: Faker::Address.country
+  country_code: Faker::Address.country_code
 })
 
 user.profile.picture.attach(io: pictures[0], filename: user.profile.name )
 
-19.times do |i|
+9.times do |i|
   random_user = User.create!({
     email: "test#{i + 2}@gmail.com",
     password: '123456'
@@ -114,7 +114,7 @@ user.profile.picture.attach(io: pictures[0], filename: user.profile.name )
     address_2: Faker::Address.street_name,
     city:   Faker::Address.city,
     state: Faker::Address.state,
-    country: Faker::Address.country
+    country_code: Faker::Address.country_code
   })
 
   random_user.profile.picture.attach(io: pictures[i + 1], filename: random_user.profile.name )
