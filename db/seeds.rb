@@ -129,7 +129,7 @@ end
     address_2: Faker::Address.street_name,
     city:   Faker::Address.city,
     state: Faker::Address.state,
-    country: Faker::Address.country,
+    country_code: Faker::Address.country_code,
     price: Money.from_amount(rand(50..150), 'EUR'),
     bedroom_count: (2..5).to_a.sample,
     bed_count: (4..10).to_a.sample,
