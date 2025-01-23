@@ -3,7 +3,7 @@ class EmailsController < ApplicationController
 
   def update
     if current_user.update!(user_params)
-      redirect_to edit_profile_path, notice: "Email updated successfully"
+      redirect_to edit_email_path, notice: "Email updated successfully"
     else
       redirect_back fallback_location: edit_profile_path, alert: "Email could not be updated"
     end
