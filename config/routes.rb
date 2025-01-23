@@ -25,6 +25,8 @@ Rails.application.routes.draw do
 
   resource :email, only: [:edit, :update]
 
+  resource :password, only: [:edit, :update]
+
   resources :reservations, only: [:index] do
     resources :reviews, only: [:new, :create]
   end
