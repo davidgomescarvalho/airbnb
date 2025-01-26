@@ -26,6 +26,12 @@
     </head>
 
   <body>
+    <% if flash[:notice].present? %>
+    <% end %>
+
+    <% if flash[:alert].present? %>
+    <% end %>
+
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <% if controller_name != "registrations" && controller_name != "sessions" %>
