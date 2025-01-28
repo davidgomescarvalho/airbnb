@@ -1,5 +1,5 @@
 module Owner
-  class DashboardController < ApplicationController
+  class PropertiesController < ApplicationController
     before_action :authenticate_user!
 
     def index
