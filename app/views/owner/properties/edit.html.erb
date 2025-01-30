@@ -4,9 +4,17 @@
 
   <main class="px-8 py-8 border rounded-md lg:flex-auto my-8">
     <div>
-      <h2 class="text-base font-semibold leading-7 text-gray-900">Personal Information</h2>
+      <h2 class="text-base font-semibold leading-7 text-gray-900">Property Information</h2>
 
       <%= form_with model: @property, url: property_path, class: "mt-16 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6" do |f| %>
+        <div class="col-span-full">
+          <%= f.label :picture, class: "block text-sm font-medium leading-6 text-gray-900" %>
+          <div class="flex gap-4 items-center">
+            <%# TODO/ fix this hard coded image %>
+            <%= image_tag @property.images[0], class: "h-16 w-16 rounded-full object-cover" %>
+            <%= f.file_field :picture, class: "font-medium" %>
+          </div>
+        </div>
 
         <div class="sm:col-span-3">
           <%= f.label :name, class: "block text-sm font-medium leading-6 text-gray-900" %>
