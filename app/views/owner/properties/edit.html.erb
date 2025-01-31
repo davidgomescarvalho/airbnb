@@ -65,7 +65,7 @@
         <div>
           <h2 class="text-base font-semibold leading-7 text-gray-900">Amenities</h2>
 
-          <%= form_with model: @property, url: owner_property_path, class: "mt-6" do |f| %>
+          <%= form_with model: @property, url: update_amenities_owner_property_path, class: "mt-6" do |f| %>
 
             <div class="mt-6 grid grid-cols-1 md:grid-cols-2">
               <% Amenity.all.each do |amenity| %>
