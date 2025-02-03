@@ -4,6 +4,19 @@
   <main>
     <div class="px-8 py-8 border rounded-md lg:flex-auto my-8">
       <div>
+        <h2 class="text-base font-semibold leading-7 text-gray-900">Property Images</h2>
+
+        <%= form_with model: @property, url: owner_property_path, class: "mt-16 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6" do |f| %>
+
+          <div class="sm:col-span-3">
+            <%= f.label :name, class: "block text-sm font-medium leading-6 text-gray-900" %>
+            <%= f.text_field :name, class: "mt-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-900 sm:text-sm sm:leading-6"  %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="px-8 py-8 border rounded-md lg:flex-auto my-8">
+      <div>
         <h2 class="text-base font-semibold leading-7 text-gray-900">Property Information</h2>
 
         <%= form_with model: @property, url: owner_property_path, class: "mt-16 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6" do |f| %>
@@ -59,30 +72,30 @@
 
         <% end %>
       </div>
+    </div>
+
+    <div class="px-8 py-8 border rounded-md lg:flex-auto my-8">
+      <div>
+        <h2 class="text-base font-semibold leading-7 text-gray-900">Amenities</h2>
+
+        <%= form_with model: @property, url: update_amenities_owner_property_path, class: "mt-6" do |f| %>
+
+          <div class="mt-6 grid grid-cols-1 md:grid-cols-2">
+            <% Amenity.all.each do |amenity| %>
+              <div class="py-2 flex">
+                <%= f.check_box :amenity_ids, {class:"w-6 h-6 mr-2 rounded-md text-primary focus:ring-primary", multiple: :true}, amenity.id, nil %>
+                <%= image_tag "amenity_icons/#{amenity.icon}", class: "w-6 h-6" %>
+                <%= f.label amenity.name, class:"ms-4 font-light" %>                </div>
+            <% end %>
+          </div>
+
+          <div class="col-span-full">
+            <%= f.submit "Save", class: "cursor-pointer mt-2 flex items-center justify-center rounded-md border border-transparent bg-primary px-8 py-3 text-base font-medium text-white hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2" %>
+          </div>
+
+        <% end %>
       </div>
-
-      <div class="px-8 py-8 border rounded-md lg:flex-auto my-8">
-        <div>
-          <h2 class="text-base font-semibold leading-7 text-gray-900">Amenities</h2>
-
-          <%= form_with model: @property, url: update_amenities_owner_property_path, class: "mt-6" do |f| %>
-
-            <div class="mt-6 grid grid-cols-1 md:grid-cols-2">
-              <% Amenity.all.each do |amenity| %>
-                <div class="py-2 flex">
-                  <%= f.check_box :amenity_ids, {class:"w-6 h-6 mr-2 rounded-md text-primary focus:ring-primary", multiple: :true}, amenity.id, nil %>
-                  <%= image_tag "amenity_icons/#{amenity.icon}", class: "w-6 h-6" %>
-                  <%= f.label amenity.name, class:"ms-4 font-light" %>                </div>
-              <% end %>
-            </div>
-
-            <div class="col-span-full">
-              <%= f.submit "Save", class: "cursor-pointer mt-2 flex items-center justify-center rounded-md border border-transparent bg-primary px-8 py-3 text-base font-medium text-white hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2" %>
-            </div>
-
-          <% end %>
-        </div>
-      </div>
+    </div>
   </main>
 
 </div>
