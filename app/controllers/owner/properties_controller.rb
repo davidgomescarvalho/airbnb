@@ -25,8 +25,7 @@ module Owner
 
     def remove_image
       image = @property.images.find(params[:image_id])
-      raise
-      if image.destroy?
+      if image.destroy!
         redirect_to edit_owner_property_path, notice: 'Image was successfully deleted.'
       else
         redirect_back fallback_location: edit_owner_property_path, alert: 'Image could not be deleted.'
