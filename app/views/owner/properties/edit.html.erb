@@ -5,14 +5,16 @@
     <div class="px-8 py-8 border rounded-md lg:flex-auto my-8">
       <div>
         <h2 class="text-base font-semibold leading-7 text-gray-900">Property Images</h2>
+        <div class="grid grid-cols-5 gap-1">
+          <% @property.images.each do |image|  %>
+            <div class="w-40 h-40">
+              <%= image_tag image, class: "w-40 h-40" %>
+            </div>
+          <% end %>
+        </div>
 
-        <%= form_with model: @property, url: owner_property_path, class: "mt-16 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6" do |f| %>
 
-          <div class="sm:col-span-3">
-            <%= f.label :name, class: "block text-sm font-medium leading-6 text-gray-900" %>
-            <%= f.text_field :name, class: "mt-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-900 sm:text-sm sm:leading-6"  %>
-          </div>
-        <% end %>
+
       </div>
     </div>
     <div class="px-8 py-8 border rounded-md lg:flex-auto my-8">
