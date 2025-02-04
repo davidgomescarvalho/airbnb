@@ -24,11 +24,12 @@ module Owner
     end
 
     def remove_image
+      image = @property.images.find(params[:image_id])
       raise
-      if @property.update!(amenities_params)
-        redirect_to edit_owner_property_path, notice: 'Amenities was successfully updated.'
+      if image.destroy?
+        redirect_to edit_owner_property_path, notice: 'Image was successfully deleted.'
       else
-        redirect_back fallback_location: edit_owner_property_path, alert: 'Amenities could not be updated.'
+        redirect_back fallback_location: edit_owner_property_path, alert: 'Image could not be deleted.'
       end
     end
 
