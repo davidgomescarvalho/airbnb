@@ -18,9 +18,10 @@
           <% end %>
         </div>
 
-        <%= form_with model: @property, url: owner_property_path, class: "mt-16" do |f| %>
+        <%= form_with model: @property, url: owner_property_path, class: "mt-6" do |f| %>
           <div>
-            <div class="flex gap-4 items-center">
+            <div class="">
+              <%= f.label 'Add Images', class: "block text-sm font-medium leading-6 text-gray-900 mb-2" %>
               <%= f.file_field :images, class: "font-medium" %>
             </div>
           </div>
