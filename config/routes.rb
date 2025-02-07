@@ -36,6 +36,7 @@ Rails.application.routes.draw do
     resources :properties do
       member do
         patch 'update_amenities'
+        patch 'add_images'
         delete 'remove_image'
       end
     end
