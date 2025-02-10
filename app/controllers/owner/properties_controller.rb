@@ -1,7 +1,7 @@
 module Owner
   class PropertiesController < ApplicationController
     before_action :authenticate_user!
-    before_action :set_property, only: [:edit, :update, :update_amenities, :add_images, :remove_image]
+    before_action :set_property, only: [:edit, :update, :update_amenities, :add_images, :remove_image, :destroy]
 
     def index
       @properties = current_user.properties
@@ -23,6 +23,12 @@ module Owner
       end
     end
 
+    def add_images
+      # TODO: Possibly optimise this part
+        @property.images.attach(params[:property][:images])
+        redirect_to edit_owner_property_path, notice: 'Property images were successfully uploaded.'
+    end
+
     def remove_image
       image = @property.images.find(params[:image_id])
       if image.destroy!
@@ -32,11 +38,10 @@ module Owner
       end
     end
 
-    def add_images
-      # TODO: Possibly optimise this part
-        @property.images.attach(params[:property][:images])
-        redirect_to edit_owner_property_path, notice: 'Property images were successfully uploaded.'
+    def destroy
+      raise
     end
+
 
     private
 
