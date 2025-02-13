@@ -39,7 +39,8 @@ module Owner
     end
 
     def destroy
-      raise
+      @property.destroy
+      redirect_to owner_properties_path, alert: "#{@property.name} deleted successfully."
     end
 
 
