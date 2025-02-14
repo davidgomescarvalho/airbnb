@@ -23,6 +23,16 @@ module Owner
       end
     end
 
+    def new
+      @property = Property.new
+    end
+
+    def create
+      @property = current_user.properties.create!(property_params)
+      redirect_to edit_owner_property_path(@property), notice: 'New property was successfully created.'
+    end
+
+
     def add_images
       # TODO: Possibly optimise this part
         @property.images.attach(params[:property][:images])

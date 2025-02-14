@@ -48,28 +48,30 @@
       </div>
     </div>
     <!-- Image gallery -->
-    <div class="mx-auto mt-6 max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-4 lg:gap-x-2 lg:px-8">
-      <div class="aspect-h-2 aspect-w-3 overflow-hidden rounded-l-lg lg:block col-span-2">
-        <%= image_tag @property.images[0], class: "h-full w-full object-cover object-center" %>
-      </div>
-      <div class="hidden lg:grid lg:grid-cols-1 lg:gap-y-2">
-        <div class="aspect-h-2 aspect-w-3 overflow-hidden">
-          <%= image_tag @property.images[1], class: "h-full w-full object-cover object-center" %>
-        </div>
-        <div class="aspect-h-2 aspect-w-3 overflow-hidden">
-         <%= image_tag @property.images[2], class: "h-full w-full object-cover object-center" %>
-        </div>
-      </div>
-     <div class="hidden lg:grid lg:grid-cols-1 lg:gap-y-2">
-        <div class="aspect-h-2 aspect-w-3 overflow-hidden rounded-tr-lg">
-          <%= image_tag @property.images[3], class: "h-full w-full object-cover object-center" %>
-        </div>
-        <div class="aspect-h-2 aspect-w-3 overflow-hidden rounded-br-lg">
-         <%= image_tag @property.images[5], class: "h-full w-full object-cover object-center" %>
-        </div>
-      </div>
-    </div>
 
+    <% if @property.images.present? %>
+      <div class="mx-auto mt-6 max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-4 lg:gap-x-2 lg:px-8">
+        <div class="aspect-h-2 aspect-w-3 overflow-hidden rounded-l-lg lg:block col-span-2">
+          <%= image_tag @property.images[0], class: "h-full w-full object-cover object-center" %>
+        </div>
+        <div class="hidden lg:grid lg:grid-cols-1 lg:gap-y-2">
+          <div class="aspect-h-2 aspect-w-3 overflow-hidden">
+            <%= image_tag @property.images[1], class: "h-full w-full object-cover object-center" %>
+          </div>
+          <div class="aspect-h-2 aspect-w-3 overflow-hidden">
+          <%= image_tag @property.images[2], class: "h-full w-full object-cover object-center" %>
+          </div>
+        </div>
+      <div class="hidden lg:grid lg:grid-cols-1 lg:gap-y-2">
+          <div class="aspect-h-2 aspect-w-3 overflow-hidden rounded-tr-lg">
+            <%= image_tag @property.images[3], class: "h-full w-full object-cover object-center" %>
+          </div>
+          <div class="aspect-h-2 aspect-w-3 overflow-hidden rounded-br-lg">
+          <%= image_tag @property.images[5], class: "h-full w-full object-cover object-center" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
     <!-- Property info -->
     <div class="mx-auto max-w-2xl px-4 pt-10 sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:grid-rows-[auto,auto,1fr] lg:gap-x-8 lg:px-8 lg:pt-8">
       <!-- Name + Description -->
