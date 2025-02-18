@@ -11,7 +11,7 @@
   >
     <h2 class="text-2xl font-medium leading-6 text-gray-900" id="modal-title">Search a place</h2>
 
-    <%= form_with url: root_path, class: "mt-6 grid grid-cols-1 gap-y-4" do |f| %>
+    <%= form_with url: search_path, local: true, method: :get, class: "mt-6 grid grid-cols-1 gap-y-4" do |f| %>
       <div class="grid grid-cols-2 items-center">
         <%= f.label 'Select Country', class: "block text-base leading-6 text-gray-900" %>
         <%= f.country_select :country_code, { include_blank: 'Select a country' }, class: "rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-900 sm:text-sm sm:leading-6" %>
