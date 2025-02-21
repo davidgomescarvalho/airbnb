@@ -10,6 +10,10 @@ class SearchController < ApplicationController
     if search_params[:country_code].present?
       @properties = @properties.where(country_code: search_params[:country_code])
     end
+
+    if search_params[:checkin_date].present? && search_params[:checkout_date].present?
+      @properties = @properties.with_reservations_overlap(search_params[:checkin_date], search_params[:checkout_date])
+    end
   end
 
   private
