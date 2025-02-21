@@ -15,9 +15,13 @@ class Reservation < ApplicationRecord
   scope :overlapping_reservations, -> (checkin_date, checkout_date) {
     where(
       '(checkin_date < ? AND checkout_date > ?) OR
-      (checkin_date < ? AND checkout_date > ?)
-      OR (checkin_date > ? AND checkout_date < ?)',
-      checkin_date, checkin_date, checkout_date, checkout_date, checkin_date, checkout_date
+      (checkin_date < ? AND checkout_date > ?) OR
+      (checkin_date > ? AND checkout_date < ?) OR
+      (checkin_date < ? AND checkout_date > ?)',
+      checkin_date, checkin_date,
+      checkout_date, checkout_date,
+      checkin_date, checkout_date,
+      checkin_date, checkout_date
     )
   }
 end
