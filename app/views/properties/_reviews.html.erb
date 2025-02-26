@@ -155,13 +155,12 @@
   </section>
 
   <!-- Reviews Items-->
-  <section aria-labelledby="reviews-items" class="border-t border-gray-200 pt-10 lg:pt-16">
+  <section aria-labelledby="reviews-items" class="border-t border-gray-200 pt-6 lg:pt-6">
     <div class="space-y-10">
-      <div class="lg:grid lg:grid-cols-2 lg:gap-16 space-y-8 lg:space-y-0 mb-12">
+      <div class="lg:grid lg:grid-cols-2 lg:gap-4 space-y-8 lg:space-y-0 mb-12">
         <%# Todo: Show latest reviews first. Apply this for other model also  %>
         <% property.reviews.limit(6).each do |review| %>
-        <%= render 'properties/review_item', review: review %>
-
+          <%= render 'properties/review_item', review: review %>
         <% end %>
         <% if property.reviews_count > 1 %>
           <button
