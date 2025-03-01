@@ -21,7 +21,7 @@
           viewBox="0 0 24 24"
           stroke-width="1.5"
           stroke="white"
-          class="size-6 block border-2 border-white rounded-full <%= property.wishlisted_by?(current_user) ? 'fill-primary' : 'fill-none' %>"
+          class="size-6 block <%= property.wishlisted_by?(current_user) ? 'fill-primary' : 'fill-none' %>"
           data-controller="wishlist"
           data-user-logged-in="<%= user_signed_in? %>"
           data-property-id="<%= property.id %>"
