@@ -130,6 +130,8 @@ end
     city:   Faker::Address.city,
     state: Faker::Address.state,
     country_code: Faker::Address.country_code,
+    latitude: Faker::Address.latitude,
+    longitude: Faker::Address.longitude,
     price: Money.from_amount(rand(50..150), 'EUR'),
     bedroom_count: (2..5).to_a.sample,
     bed_count: (4..10).to_a.sample,
