@@ -7,6 +7,10 @@ class Property < ApplicationRecord
   validates :city, presence: true
   validates :state, presence: true
   validates :country_code, presence: true
+  validates :latitude, presence: true
+  validates :longitude, presence: true
+
+
 
   monetize :price_cents, allow_nil: true
 
