@@ -14,7 +14,7 @@ module Api
 
     def destroy
       wishlist = Wishlist.find(params[:id])
-      wishlist.destroy()
+      wishlist.destroy
 
       respond_to do |format|
         format.json do
