@@ -9,6 +9,10 @@ class BookingsController < ApplicationController
     # Number of nights
     @total_nights = number_of_nights
 
+    # Per Night Price
+
+    @per_night = @property.price
+
     # Base Fare
     @base_fare = @property.price * @total_nights
 
