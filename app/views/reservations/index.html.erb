@@ -10,7 +10,6 @@
       <div class="mt-4 border border-gray-300 rounded-xl p-6 h-min">
 
         <div class="flex justify-between items-center">
-          <%# TODO: convert this into a partial, it's getting used in other places: share, reservations, reviews, bookings...  %>
           <%= render 'properties/mini_property_item', property: reservation.property %>
           <% if reservation.review.present? %>
               <span class="inline-flex items-center pointer-events-none text-sm text-black mt-4">

@@ -58,7 +58,8 @@
         </div>
 
           <div>
-            <h3 class="text-xl font-medium leading-6 text-gray-900">Price details</h3>
+            <%# TODO: Convert this into a partial %>
+            <h3 class="text-xl font-medium leading-6 text-gray-900">Price Details</h3>
             <div class="flex justify-between font-light mt-6">
               <%# TODO: don't fetch price from property model and instead save this to reservation/payment as it might change Update this same concept everywhere else %>
               <p><%= humanized_money(@per_night) %> <%= currency_symbol %> x <%= @total_nights %> night </p>

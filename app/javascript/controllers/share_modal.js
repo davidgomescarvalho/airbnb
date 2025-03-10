@@ -6,7 +6,6 @@ export default class extends Controller {
     });
   }
   whatsappShare() {
-    // TODO: Implement on your own.
     window.open(
       `https://web.whatsapp.com:/send?text=${this.element.dataset.shareUrl}`
     );

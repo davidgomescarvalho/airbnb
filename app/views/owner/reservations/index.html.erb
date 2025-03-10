@@ -40,7 +40,7 @@
             <div>
               <h3 class="text-xl font-medium leading-6 text-gray-900">Price details</h3>
               <div class="flex justify-between font-light mt-6">
-                <p><%= humanized_money(reservation.property.per_night) %> <%= currency_symbol %> x <%= (reservation.checkout_date - reservation.checkin_date).to_i %> night </p>
+                <p><%= humanized_money(@per_night) %> <%= currency_symbol %> x <%= (reservation.checkout_date - reservation.checkin_date).to_i %> night </p>
                 <p><%= humanized_money(reservation.payment.base_fare) %> <%= currency_symbol %></p>
               </div>
                <div class="flex justify-between font-light mt-4">
