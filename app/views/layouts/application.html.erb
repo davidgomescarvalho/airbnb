@@ -14,6 +14,13 @@
     <% if controller_name == 'booking_payments' && action_name == 'create' %>
       <%= stripe_javascript_tag %>
     <% end %>
+
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=maps,marker&v=beta"
+      defer
+    >
+    </script>
+
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
